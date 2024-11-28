@@ -153,3 +153,16 @@ This mean point is where the key card is located and we can count how long i tak
 
 By following this deterministic pattern, we can accurately determine the location of the key card in the room.
 """
+
+
+
+Task3:
+
+Since both num and den are real-valued for the given range of x, the resulting y will also be real-valued. 
+However, there might be points where the denominator den is zero, 
+which would result in division by zero and thus y would be infinity at those points.
+
+To summarize, y is a real-valued array, but it may contain infinity values where the denominator is zero.
+
+So yes pick option [A] as it is a real number most of the time.
+
