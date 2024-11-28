@@ -1,0 +1,155 @@
+
+Task 1:
+Q1: Where is the key card in the room (coordinates, disregard decimals)? Justify answer with code and figures.
+
+### Answer to Q1:
+The key card is located at the mean point of all movements. The coordinates of the key card are approximately (0, 0).
+
+### Code:
+import math
+import numpy as np
+import matplotlib.pyplot as plt
+
+def hidden_card():
+    zposition_list = []
+    a = 13  # Define the variable 'a'
+
+    # zinitial initial position of the hidden card
+    zinitial = (1 + 1j) / (math.sqrt(2) * (1j**4) * (((1 + 1j) / abs(1 + 1j))**a))
+
+    # u is next position of the hidden card
+    u = math.sqrt(2) / (1 + 1j)
+
+    # move position by dividing her current position by u
+    zposition = zinitial / u
+    zposition_list.append(zposition)
+
+    # creates a plot of the hidden card's position
+    plt.xlim(-1, 1)
+    plt.ylim(-1, 1)
+    plt.xlabel("Real")
+    plt.ylabel("Imaginary")
+    
+    # dl moves 64 times until she notices the card in the mean of all 64 times moved
+    for i in range(64):
+        zposition = zposition / u
+        zposition_list.append(zposition)
+        plt.plot(zposition.real, zposition.imag, 'ro')
+    
+    # the mean of all 64 times moved
+    zmean = np.mean(zposition_list)
+    plt.plot(zmean.real, zmean.imag, 'bo')
+    plt.grid()
+    plt.show()
+    return zmean
+
+hidden_card()
+
+
+Q2: Explain why ideally using maths.
+
+### Answer to Q2:
+Using mathematics, we can explain that the key card is located at the mean point of all movements because DI irrational moves in a deterministic pattern. 
+Each movement is a division by a complex number, which results in a predictable trajectory. 
+By averaging all the positions, we find the central point of this trajectory, which is the mean of all positions. 
+This mean point is where the key card is located.
+
+### Explanation:
+1. **Initial Position Calculation**:
+   - Zinitial = (i+j) / x j**4 ((1+j)/ )**a
+   - This formula calculates the initial position of DI irrational in the room.
+
+2. **Next Position Calculation**:
+   - U = ( )/(1+j)2
+   - DI irrational moves by dividing her current position by "u".
+
+3. **Loop for 64 Moves**:
+   - DI irrational moves 64 times, updating her position each time by dividing by "u"
+
+4. **Mean Calculation**:
+   - The mean of all positions is calculated to find the central point of the trajectory.
+
+5. **Plotting**:
+   - The positions are plotted on a graph, with the mean position highlighted.
+
+By following this deterministic pattern, we can accurately determine the location of the key card in the room.
+we get # np.complex128(-0.01087856586440844-0.01087856586440844j)
+
+
+
+Task 2:
+Q3: Where is the key card in the second room (coordinates, disregard decimals)? Justify answer with code and figures.
+
+def second_room(zmean):
+    a = 13
+    count = 0
+    zposition_list2 = []
+    
+    # zinitial initial position of the hidden card
+    zinitial = (math.sqrt(2)*(1 + 1j)) / (((1+1j)/math.sqrt(2))**a)
+
+    # u is next position of the hidden card
+    u = math.sqrt(2) / (1 + 1j)
+
+    # move positions by dividing her current position by u
+    zposition = zinitial / u
+
+    # dl moves up to 64 times. but quicker than the first room as it stops if the card is found in the mean of all 64 times moved
+    while count < 64:
+        zposition = zposition / u
+        zposition_list2.append(zposition)
+        zpositionmean2 = np.mean(zposition_list2)
+        if np.isclose(zpositionmean2, zmean, atol=1e-6):
+            break
+        count += 1
+        plt.plot(zposition.real, zposition.imag, 'ro')
+        plt.xlabel('real')
+        plt.ylabel('imaginary')
+
+    # the mean of all 64 times moved
+    zpositionmean2 = np.mean(zposition_list2)
+    plt.plot(zpositionmean2.real, zpositionmean2.imag, 'bo')
+    plt.grid()
+    plt.show()
+    print(f"count: {count}")
+    print(f"zpositionmean2: {zpositionmean2}")
+    print(f"zmean: {zmean}")
+    return zmean
+
+zmean = hidden_card()  # Assuming hidden_card() is defined as in Task 1
+second_room(zmean)
+
+count: 7 steps
+task2 mean : 0j
+task1 mean : (-0.01087856586440844-0.01087856586440844j)
+
+Q4: Explain why ideally using maths.
+
+### Answer to Q4:
+Using mathematics, we can explain that the key card is located at the mean point of all movements because DI irrational moves in a deterministic pattern. 
+Each movement is a division by a complex number, which results in a predictable trajectory. 
+By averaging all the positions, we find the central point of this trajectory, which is the mean of all positions. 
+This mean point is where the key card is located and we can count how long i takes to get there
+
+### Explanation:
+1. **Initial Position Calculation**:
+   - zinitial = (math.sqrt(2)*(1 + 1j)) / (((1+1j)/math.sqrt(2))**a)
+   - This formula calculates the initial position of DI irrational in the room.
+
+2. **Next Position Calculation**:
+   - u = math.sqrt(2) / (1 + 1j)
+   - DI irrational moves by dividing her current position by "u"
+
+3. **Loop for Moves**:
+   - DI irrational moves up to 64 times, updating her position each time by dividing by u
+   - The loop breaks if the mean position task1 is close to task2 within a tolerance of  1e-6.
+   - printing the counted loops
+
+4. **Mean Calculation**:
+   - The mean of all positions is calculated to find the central point of the trajectory.
+
+5. **Plotting**:
+   - The positions are plotted on a graph, with the mean position highlighted.
+
+By following this deterministic pattern, we can accurately determine the location of the key card in the room.
+"""
