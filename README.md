@@ -42,7 +42,7 @@
 - Jupyter Notebook (Python 3.8+)  
 - Required Libraries: `sympy`, `networkx`, `matplotlib`, `numpy`  
 
-**Installation**:  
+**Installation**:  (not yet done)
 ```bash
 pip install -r requirements.txt
 jupyter notebook
