@@ -4,7 +4,7 @@
 ![Collaborators](https://img.shields.io/badge/Collaborators-4-brightgreen)  
 ![License](https://img.shields.io/badge/License-MIT-purple)  
 
-*A high-level implementation of discrete mathematics problems and algorithms, collaboratively developed under [Your Name]'s leadership.*
+*A high-level implementation of discrete mathematics problems and algorithms, collaboratively developed under my leadership.*
 
 ---
 
